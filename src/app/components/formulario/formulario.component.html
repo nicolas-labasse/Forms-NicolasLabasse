@@ -1,0 +1,84 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Agregar Serie
+  </button>
+  
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Serie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container mt-5">
+                <div class="row text-center justify-content-center">
+                    <div class="col-12">
+                        <form [formGroup]="formulario" novalidate (ngSubmit)="agregarSerie()">
+                            <div class="row mb-4">
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" formControlName="nombre" placeholder="Nombre de la serie" class="form-control" />
+                                  <p *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.errors?.['required']">El campo de nombre es requerido</p>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="url" formControlName="imagen" placeholder="Url imagen" class="form-control" />
+                                  <p *ngIf="formulario.get('imagen')?.touched && formulario.get('imagen')?.errors?.['required']">El campo de imagen es requerido</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="date" formControlName="fecha" placeholder="Fecha" class="form-control" />
+                                    <p *ngIf="formulario.get('fecha')?.touched && formulario.get('fecha')?.errors?.['required']">El campo de fecha es requerido</p>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="text" formControlName="genero" placeholder="Genero" class="form-control" />
+                                    <p *ngIf="formulario.get('genero')?.touched && formulario.get('genero')?.errors?.['required']">El campo de genero es requerido</p>
+                                    <p *ngIf="formulario.get('genero')?.touched && formulario.get('genero')?.errors?.['maxLength']">El campo genero no puede contener mas de 15 caracteres</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-4">
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="number" formControlName="temporadas" placeholder="Temporadas" class="form-control" />
+                                    <p *ngIf="formulario.get('temporadas')?.touched && formulario.get('temporadas')?.errors?.['required']">El campo de temporada es requerido</p>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="number" formControlName="episodios" placeholder="Episodios" class="form-control" />
+                                    <p *ngIf="formulario.get('episodios')?.touched && formulario.get('episodios')?.errors?.['required']">El campo de episodio es requerido</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-4">
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="number" formControlName="rating" placeholder="Rating" class="form-control" />
+                                    <p *ngIf="formulario.get('rating')?.touched && formulario.get('rating')?.errors?.['required']">El campo de rating es requerido</p>
+                                  </div>
+                                </div>
+                              </div>
+                             
+            
+                              <div class="form-outline mb-4">
+                                <textarea class="form-control" formControlName="descripcion" placeholder="Descripcion" rows="4"></textarea>
+                                <p *ngIf="formulario.get('descripcion')?.touched && formulario.get('descripcion')?.errors?.['required']">El campo de descripcion es requerido</p>
+                                <p *ngIf="formulario.get('descripcion')?.touched && formulario.get('descripcion')?.errors?.['maxLength']">El campo no puede contener mas de 200 caracteres</p>
+                              </div>
+                            <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary btn-block mb-4" style="width: 50%;">Guardar</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

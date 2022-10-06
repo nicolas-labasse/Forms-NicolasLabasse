@@ -1,0 +1,33 @@
+<div class="container-fluid">
+      <div class="row">
+          <div *ngFor="let serie of _s"  class="col-3 text-center mt-5">
+            <div class="card h-100" [ngClass]="serie.rating >= 5 ? 'masvisto' : '' " style="width: 22rem;">
+              <img src="{{serie.imagen}}" class="card-img-top" alt="Sunset Over the Sea"/>
+              <div class="card-body">
+                <h1 class="h3 card-text">{{serie.nombre}}</h1>
+                <div class="d-flex text-start">
+                  <div class="col-6">
+                    <p class="card-text">Temporadas: {{serie.temporadas}}</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="card-text">Episodios: {{serie.episodios}}</p>
+                  </div>
+                </div>
+                <p class="card-text mt-2 text-start">Genero: {{serie.genero}}</p>
+                <p class="card-text text-start">Año: {{serie.fecha}}</p>
+                <p class="card-text text-start">{{serie.descripcion}}</p>
+                
+                <p class="card-text text-start">Rating:
+                 <span *ngIf="serie.rating >= 5">
+                  <i *ngFor="let r of [1,2,3,4,5]; let i = index" [ngClass]="serie.rating >= 5 ? 'stars' : 'starsbad' " 
+                    
+                    class="fa-solid fa-star"></i>
+                 </span>
+                 <span *ngIf="serie.rating <= 5">
+                  <i *ngFor="let r of [1,2,3]; let i = index" [ngClass]="serie.rating >= 5 ? 'stars' : 'starsbad' " class="fa-solid fa-star"></i>
+                 </span>
+                </p>
+              </div>
+          </div>
+      </div>
+  </div>
